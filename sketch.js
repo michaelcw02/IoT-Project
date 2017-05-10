@@ -1,10 +1,13 @@
+var canvas;
+
 function preload() {
 
 }
 
 function setup() {
-    createCanvas(800, 800);
+    canvas = createCanvas(window.innerWidth, window.innerHeight);
 }
+//REFERENCE: https://p5js.org/reference/
 //colors:
     //background(rgb); para el fondo
     //stroke(rgb); para los bordes
@@ -16,6 +19,14 @@ function draw() {
     rectMode(CENTER);
 
     fill(100, 200, 0);
-    ellipse(400, 400, 100, 100);
-    
+    ellipse(window.innerWidth/2, window.innerHeight/2, 100, 100);
+
 }
+
+window.onresize = function () {
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+    canvas.size(w, h);
+    width = w;
+    height = h;
+};
