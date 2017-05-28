@@ -1,37 +1,32 @@
-
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,500,300,600,700,800);
-
-.principal-body{
-    background:url('../images/wallpaper_0.jpg'); 
-	background-repeat:no-repeat;
-	background-size:cover; 
-	background-attachment: fixed; 
-	font-family:helvetica, arial, sans-serif;
-	line-height:20px;
+.principal-body {
+    background: url('../images/wallpaper_0.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: helvetica, arial, sans-serif;
+    line-height: 20px;
 }
-
-
 
 h1 {
-  margin: 0;
-  padding: 0;
-  font-family: 'Raleway';
-  font-weight: 400;
-  font-size: 2.4em;
-  color: #2c3e50;
-  text-align: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway';
+    font-weight: 400;
+    font-size: 2.4em;
+    color: #2c3e50;
+    text-align: center;
 }
 
-
 .letterDrop {
-  position: relative;
-  top: 0.60em;  
-  display: inline-block;
-  text-transform: uppercase; 
-  letter-spacing: 0.3em;
-  opacity: 0.8;
-  transform: rotateX(-90deg);
-  animation: letterDrop 1.2s ease 1 normal forwards;
+    position: relative;
+    top: 0.60em;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    opacity: 0.8;
+    transform: rotateX(-90deg);
+    animation: letterDrop 1.2s ease 1 normal forwards;
 }
 
 @keyframes letterDrop {
@@ -50,50 +45,86 @@ h1 {
     }
 }
 
-
 span:nth-child(2n) {
-  color: #34495e; }
+    color: #34495e;
+}
 
 span:nth-child(-n+4) {
-  color: #c0392b;
-  font-weight: 800;
-  letter-spacing: 0.25em;
+    color: #c0392b;
+    font-weight: 800;
+    letter-spacing: 0.25em;
 }
 
 article {
-	background:rgba(0,0,0,.5);
-	padding:20px;
-	margin:10px 0;
-	color:white;
-	box-shadow:0 5px 5px 3px rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, .5);
+    padding: 20px;
+    margin: 10px 0;
+    color: white;
+    box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.25);
 }
+
 article h1,
 article h2,
 article h3,
 article h4,
 article h5,
-article p, 
+article p,
 article hr {
     font-family: 'Open Sans', sans-serif !important;
-	color: white;
-	margin-bottom: 20px;
+    color: white;
+    margin-bottom: 20px;
 }
+
 .body-container {
     margin-top: 1px;
 }
+
 .top-container {
     height: auto;
     width: 100%;
 }
+
 @media (min-width: 768px) {
     .top-container {
         height: auto;
         width: 95%;
     }
-.body-container {
+    .body-container {
         position: absolute;
         margin-top: 10px;
         padding-left: 2% !important;
         padding-right: 2% !important;
         margin-top: -10px !important;
-    }}
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.menu {
+    background: rgba(51, 51, 51, .8);
+    position: absolute;
+    margin-top: 10px;
+    padding-left: 2% !important;
+    padding-right: 2% !important;
+    margin-left: 60px !important;
+    margin-right: 100px !important;
+    margin-top: 260px !important;
+    width: 1000px;
+    color: white;
+    padding-bottom: 30px;
+}
+
+.logo {
+    background-color: white;
+    width: 200px;
+    height: 200px;
+}
+.product {
+    width: 300px;
+    height: auto;
+}
+.caption {
+    font-size: 20px;
+}
