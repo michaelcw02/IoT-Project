@@ -53,6 +53,4 @@ jQuery.fn.letterDrop = function () {
 
 
 
-
-$('.title').letterDrop();
-
+$($('.title').letterDrop());

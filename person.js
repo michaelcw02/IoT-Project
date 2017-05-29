@@ -5,7 +5,7 @@ function Person(x, y) {
 
     this.show = () => {
         fill('#00CED1');
-        ellipse(this.x, this.y, 35, 35);
+        ellipse(this.x, this.y, 24, 24);
     }
 
     this.move = (dir) => {
@@ -26,9 +26,9 @@ function Person(x, y) {
             this.x = 0;
         if(this.y < 0)
             this.y = 0;
-        if(this.x > 1200)
-            this.x = 1200;
-        if(this.y > 800)
-            this.y = 800;
+        if(this.x > 1000)
+            this.x = 1000;
+        if(this.y > 600)
+            this.y = 600;
     }
 }

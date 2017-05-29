@@ -27,6 +27,7 @@ h1 {
     opacity: 0.8;
     transform: rotateX(-90deg);
     animation: letterDrop 1.2s ease 1 normal forwards;
+    margin-top: -160px !important;
 }
 
 @keyframes letterDrop {
@@ -115,7 +116,13 @@ article hr {
     color: white;
     padding-bottom: 30px;
 }
-
+.sketchMenu {
+    position: relative;
+    margin-top: 40px !important;
+    width: 1200px;
+    color: white;
+    padding-bottom: 30px;
+}
 .logo {
     background-color: white;
     width: 200px;
