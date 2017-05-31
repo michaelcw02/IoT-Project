@@ -96,4 +96,27 @@ article hr {
         padding-left: 2% !important;
         padding-right: 2% !important;
         margin-top: -10px !important;
-    }}
+    }
+}
+
+.body-board{
+    background:url('../images/board2.png'); 
+	background-repeat:no-repeat;
+	background-size:cover; 
+	background-attachment: fixed; 
+	font-family:helvetica, arial, sans-serif;
+	line-height:20px;
+}
+.text-center{
+  text-align: center;
+}
+.carousel-container {
+    margin-top: 0; 
+    z-index: 1500;
+}
+@media (min-width: 768px) {
+  .carousel-container {
+        margin-top: -89px; 
+        z-index: 1500;
+    }
+}
