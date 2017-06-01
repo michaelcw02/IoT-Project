@@ -41,11 +41,14 @@ function draw() {
     if (keyIsDown(DOWN_ARROW))  person.move(3);
 
     machines.forEach( (m) => {
-        if(person.isNear(m)) {
+        if(person.collision(m)) {
             showModal('myModal', 'Information', 'LALALA');
             person.canMove = false;
             person.x = m.x + 16; // PARA QUE SE POSICIONE AL MEDIO DE LA MAQUINA
             person.y = m.y + 45;
+        } else {
+            person.canMove = true;
+
         }
     } )
 

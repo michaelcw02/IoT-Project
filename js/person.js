@@ -1,15 +1,16 @@
 function Person(x, y) {
     this.x = x;
     this.y = y;
+    this.r = 12;
     this.w = 24; // width
     this.h = 24; // height
     this.speed = 2;
     this.canMove = true;
 
     this.show = () => {
-        ellipseMode(RADIUS);
         fill('#00CED1');
-        ellipse(this.x, this.y, 12, 12);
+        ellipseMode(CENTER);
+        ellipse(this.x, this.y, this.r * 2, this.r * 2);
     }
 
     this.move = (dir) => {
@@ -32,6 +33,24 @@ function Person(x, y) {
         }
     }
 
+    this.collision = (obj) => {
+        var closeX = this.x;
+        var closeY = this.y;
+        //checks left side of rect
+        if(this.x < obj.x)          closeX = obj.x;
+        //checks right side of rect
+        if(this.x > obj.x + obj.w)  closeX = obj.x + obj.w;
+        //checks top side of rect
+        if(this.y < obj.y)          closeY = obj.y;
+        //checks bottom side of rect
+        if(this.y > obj.y + obj.h)  closeY = obj.y + obj.h;
+
+        var distance = dist(this.x, this.y, closeX, closeY);
+        if(distance < this.r)           return true;
+        return false;
+    }
+
+    //NOT IN USE, MIGHT BE USED LATER FOR RECTANGLES COLLISIONS
     this.valueInRange = (value, min, max) => {
         return (value >= min) && (value <= max);
     }
@@ -42,3 +61,4 @@ function Person(x, y) {
         return xOverlap && yOverlap;
     }
 }
+
