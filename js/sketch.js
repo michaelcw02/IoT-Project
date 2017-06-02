@@ -5,7 +5,7 @@ var person;
 var stores = [];
 
 function preload() {
-    machineImg = loadImage("images/atm-machine.jpg");
+    machineImg= loadImage("images/atm-machine.jpg");
     store1Img = loadImage("images/store3.jpg");
     store2Img = loadImage("images/store5.jpg");
     store3Img = loadImage("images/store4.jpg");
@@ -19,11 +19,11 @@ function setup() {
     machines.push(new Machine(400-32, 500));
     machines.push(new Machine(600-32, 500));
     machines.push(new Machine(800-32, 500));
-    person = new Person(482, 600);
     stores.push(new Store1(10, 10));
     stores.push(new Store2(327, 44));
     stores.push(new Store3(500, 31));
     stores.push(new Store4(663, 34));
+    person = new Person(482, 600);
 }
 
 //REFERENCE: https://p5js.org/reference/
@@ -47,7 +47,7 @@ function draw() {
         } else {
             person.canMove = true;
         }
-    } )
+    } );
     
     stores.forEach( (s) => {
         if(person.collision(s.door)) {
@@ -58,8 +58,6 @@ function draw() {
         } else {
             person.canMove = true;
         }
-    } )
-
-
+    } );
 
 }
