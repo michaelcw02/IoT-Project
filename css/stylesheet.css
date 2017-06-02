@@ -173,12 +173,17 @@ article hr {
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
 }
+
+.modal-slg {
+    width: 1200px !important;
+}
+
 .modal-body{
-  height: 100%;
-  background-image: url("../images/board2.png") !important;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  background-position: center;
+    height: 100%;
+    background-image: url("../images/board2.png") !important;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
 }
 #divCheck {
     width: 180px;
