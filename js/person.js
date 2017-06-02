@@ -4,7 +4,7 @@ function Person(x, y) {
     this.r = 12;
     this.w = 24; // width
     this.h = 24; // height
-    this.speed = 2;
+    this.speed = 3;
     this.canMove = true;
 
     this.show = () => {

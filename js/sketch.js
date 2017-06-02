@@ -2,6 +2,7 @@ var canvas;
 var bgImg;
 var machines = [];
 var person;
+var stores = [];
 
 function preload() {
     machineImg = loadImage("images/atm-machine.jpg");
@@ -19,21 +20,18 @@ function setup() {
     machines.push(new Machine(600-32, 500));
     machines.push(new Machine(800-32, 500));
     person = new Person(482, 600);
-    store1 = new Store1(10, 10);
-    store2 = new Store2(327, 44);
-    store3 = new Store3(500, 31);
-    store4 = new Store4(663, 34);
+    stores.push(new Store1(10, 10));
+    stores.push(new Store2(327, 44));
+    stores.push(new Store3(500, 31));
+    stores.push(new Store4(663, 34));
 }
 
 //REFERENCE: https://p5js.org/reference/
 function draw() {
     background(250, 235, 215);
-    store1.show();
-    store2.show();
-    store3.show();
-    store4.show();
-    person.show();
+    stores.forEach( (s) => s.show() );
     machines.forEach((m) => m.show());
+    person.show();
     
     if (keyIsDown(LEFT_ARROW))  person.move(0);
     if (keyIsDown(UP_ARROW))    person.move(1);
@@ -42,14 +40,26 @@ function draw() {
 
     machines.forEach( (m) => {
         if(person.collision(m)) {
-            showModal('myModal', 'Information', 'LALALA');
+            showModal('myModal', 'Information', 'You are in a machine');
             person.canMove = false;
             person.x = m.x + 16; // PARA QUE SE POSICIONE AL MEDIO DE LA MAQUINA
             person.y = m.y + 45;
         } else {
             person.canMove = true;
-
         }
     } )
+    
+    stores.forEach( (s) => {
+        if(person.collision(s.door)) {
+            showModal('myModal', 'Information', 'You are in a store');
+            person.canMove = false;
+            person.x = (s.door.x + (s.door.w / 2));
+            person.y = (s.door.y +  s.door.h) + 20;
+        } else {
+            person.canMove = true;
+        }
+    } )
+
+
 
 }
