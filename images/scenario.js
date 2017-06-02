@@ -1,3 +1,0 @@
-function Scenario() {
-    image(backgroundImg,)
-}
