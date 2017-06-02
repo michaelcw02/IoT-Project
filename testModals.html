@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
     <div class="modal fade" id="firstModal" role="dialog">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
@@ -17,7 +18,7 @@
                 </div>
             </div>
         </div>
-    </div>}
+    </div>
     <div class="modal fade" id="secondModal" role="dialog">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
@@ -41,83 +42,86 @@
             </div>
         </div>
     </div>
-<div id="modal" class="modalFinger">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div style="display: block">
-            <div style="display: inline-block; vertical-align:top; margin-right: 70px">
-              <br><br><h2> Fingerprint: </h2>
-              <div><img id="fingerprint" class="img-responsive" src="images/fingerprint1.jpg" raggable="true"
-                ondragstart="drag(event)" width="180" height="150" style="float:left"></div>
+
+    <div id="modal" class="modalFinger">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="display: block">
+                    <div style="display: inline-block; vertical-align:top; margin-right: 70px">
+                        <br><br>
+                        <h2> Fingerprint: </h2>
+                        <div><img id="fingerprint" class="img-responsive" src="images/fingerprint1.jpg" raggable="true" ondragstart="drag(event)"
+                                width="180" height="150" style="float:left"></div>
+                    </div>
+                    <div style="display: inline-block; vertical-align:top; margin-left: 65px">
+                        <br><br><br><br><br>
+                        <center>
+                            <h3>Fingerprint:<img id="Ifingerprint" class="img-responsive" src="images/fingerprint1.jpg" width="60"
+                                    height="60"></h3>
+                            <h4>Please, pass your finger over the fingerprint reader...</h4>
+                            <div id="divCheck" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                            <button id="btnSucc" class="btn btn-default" type="button" style="display:none;"> OK </button>
+                        </center>
+                    </div>
+                </div>
             </div>
-            <div style="display: inline-block; vertical-align:top; margin-left: 65px">
-              <br><br><br><br><br>
-              <center>
-              <h3>Fingerprint:<img id="Ifingerprint"  class="img-responsive" src="images/fingerprint1.jpg" width="60" height="60"></h3>
-              <h4>Please, pass your finger over the fingerprint reader...</h4>
-              <div id="divCheck" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-              <button id="btnSucc" class="btn btn-default" type="button" style="display:none;"> OK </button>
-              </center>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
-  <script>
-    var modal = document.getElementById('modal');
-    var btn = document.getElementById("btnSucc");
-    var steps = 1;
+</body>
+<script>
+                                                       var modal = document.getElementById('modal');
+                                                       var btn = document.getElementById("btnSucc");
+                                                       var steps = 1;
 
-    modal.style.display = "block";
+                                                       modal.style.display = "block";
 
-    btn.onclick = function() {
-      modal.style.display = "none";
-    }
+                                                       btn.onclick = function () {
+                                                           modal.style.display = "none";
+                                                       }
 
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
+                                                       function allowDrop(ev) {
+                                                           ev.preventDefault();
+                                                       }
 
-    function drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
+                                                       function drag(ev) {
+                                                           ev.dataTransfer.setData("text", ev.target.id);
+                                                       }
 
-    function drop(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("text");
-        var imag = document.getElementById(data);
-        var btn = document.getElementById("btnSucc");
-        var text = document.getElementsByTagName("h4")[1];
-        if(steps==1&&data == "fingerprint"){
-          ev.target.appendChild(imag);
-          steps++;
-          document.getElementById("Ifingerprint").src = "images/fingerprintIconC.png";
-          ev.target.removeChild(imag);
-        }
-        if(steps == 2){
-          text.innerText = "Successful, come on!";
-          var check = document.createElement("img");
-          check.src = "images/personCheck.png";
-          check.width = "180";
-          check.height = "180";
-          ev.target.appendChild(check);
-          btn.style.display = "block";
-      
-        }
-    }
-  </script>
+                                                       function drop(ev) {
+                                                           ev.preventDefault();
+                                                           var data = ev.dataTransfer.getData("text");
+                                                           var imag = document.getElementById(data);
+                                                           var btn = document.getElementById("btnSucc");
+                                                           var text = document.getElementsByTagName("h4")[1];
+                                                           if (steps == 1 && data == "fingerprint") {
+                                                               ev.target.appendChild(imag);
+                                                               steps++;
+                                                               document.getElementById("Ifingerprint").src = "images/fingerprintIconC.png";
+                                                               ev.target.removeChild(imag);
+                                                           }
+                                                           if (steps == 2) {
+                                                               text.innerText = "Successful, come on!";
+                                                               var check = document.createElement("img");
+                                                               check.src = "images/personCheck.png";
+                                                               check.width = "180";
+                                                               check.height = "180";
+                                                               ev.target.appendChild(check);
+                                                               btn.style.display = "block";
 
-    
+                                                           }
+                                                       }
+</script>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
-    <script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
-    <script language="javascript" type="text/javascript" src="libraries/p5.sound.js"></script>
-    <script language="javascript" type="text/javascript" src="utils.js"></script>
-    <script language="javascript" type="text/javascript" src="modals.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+<script language="javascript" type="text/javascript" src="libraries/p5.dom.js"></script>
+<script language="javascript" type="text/javascript" src="libraries/p5.sound.js"></script>
+<script language="javascript" type="text/javascript" src="utils.js"></script>
+<script language="javascript" type="text/javascript" src="modals.js"></script>
 </body>
 
 </html>
