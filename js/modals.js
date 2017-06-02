@@ -1,30 +1,8 @@
 function showModalFingerPrint() {
   let element = '';
-  element += '<div id="modal" class="modal">';
-  element += '<div class="modal-content">';
-  element += ' <div class="modal-body">';
-  element += '<div style="display: block">';
-  element += ' <div style="display: inline-block; vertical-align:top; margin-right: 70px">';
-  element += '<br><br><h2> Fingerprint: </h2>';
-  element += '<div><img id="fingerprint" class="img-responsive" src="images/fingerprint1.jpg" raggable="true" ondragstart="drag(event)" width="180" height="150" style="float:left"></div>';
-  element += '</div>';
-  element += '<div style="display: inline-block; vertical-align:top; margin-left: 65px">';
-  element += ' <br><br><br><br><br>';
-  element += '<center>';
-  element += '<h3>Fingerprint:<img id="Ifingerprint"  class="img-responsive" src="images/fingerprint1.jpg" width="60" height="60"></h3>';
-  element += '<h4>Please, pass your finger over the fingerprint reader...</h4>';
-  element += '<div id="divCheck" ondrop="drop(event)" ondragover="allowDrop(event)"></div>';
-  element += '  <button id="btnSucc" class="btn btn-default" type="button" style="display:none;"> OK </button>';
-  element += ' </center>';
-  element += '</div>';
-  element += '</div>';
-  element += '</div>';
-  element += '</div>';
-  element += '  </div>';
+  element += '<iframe src="testModals.html" height=100% width=100%>';
+  element += '</iframe>';
   showModal('firstModal', 'FINGERPRINT PROCESS!', element);
-   $('#btnSucc').on('click', (event) => {
-    /* se llama al modal de ofertas*/
-  });
 }
 
 function showModalOffers() {
