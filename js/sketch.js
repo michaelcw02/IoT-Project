@@ -40,7 +40,7 @@ function draw() {
 
     machines.forEach( (m) => {
         if(person.collision(m)) {
-            showModal('myModal', 'Information', 'You are in a machine');
+            showModalFingerPrint();
             person.canMove = false;
             person.x = m.x + 16; // PARA QUE SE POSICIONE AL MEDIO DE LA MAQUINA
             person.y = m.y + 45;

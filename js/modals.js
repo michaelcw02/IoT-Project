@@ -18,7 +18,7 @@ function showModalFingerPrint() {
   element += ' </center>';
   element += '</div>';
   element += '</div>';
-  element += '</div>;'
+  element += '</div>';
   element += '</div>';
   element += '  </div>';
   showModal('firstModal', 'FINGERPRINT PROCESS!', element);
