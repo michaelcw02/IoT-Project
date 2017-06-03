@@ -174,10 +174,6 @@ article hr {
     to {top:0; opacity:1}
 }
 
-.modal-slg {
-    width: 1200px !important;
-}
-
 #divCheck {
     width: 180px;
     height: 180px;
@@ -195,4 +191,11 @@ article hr {
     overflow: auto; /* Enable scroll if needed */
    /* background-color: rgb(0,0,0); /* Fallback color 
     background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+#firstModal {
+    z-index: 3000 !important;
+}
+#secondModal {
+    z-index: 4000 !important;
 }
