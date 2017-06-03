@@ -29,12 +29,12 @@ function Person(x, y) {
             //down
             if (dir == 3) this.y += this.speed;
 
-            if(level === 0) {
+            if(level === 0 || level === 3) {
                 //boundaries for level 0, mall
                 if(this.x < 0) this.x = 0;
                 if(this.y < 0) this.y = 0;
                 if(this.x > 1000) this.x = 1000;
-                if(this.y > 600) this.y = 600;
+                if(this.y > 650) this.y = 650;
             }
             if(level === 4) {
                 if(this.x < 187) this.x = 187;

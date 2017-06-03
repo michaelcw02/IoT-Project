@@ -20,7 +20,8 @@ function Store4(x, y) {
     this.items.push( new Item('shoes',  525, 480, 220,  50) );
 
     this.showInside = () => {
-        image(exitDoorImg, 310, 580);
+        image(store4Bg, 187, 0);
+        image(exitDoorImg, 310, 580, 50, 50);
         this.items.forEach( (i) => i.show() );
     }
 }

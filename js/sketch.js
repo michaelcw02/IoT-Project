@@ -23,6 +23,7 @@ function preload() {
     store2Ad    = loadImage("images/pizzaHut.png");
     store3Ad    = loadImage("images/supermarket.jpg");
     store4Ad    = loadImage("images/calvin-klein.svg");
+    store3Bg    = loadImage("images/Supermarket-shelves.jpg")
     store4Bg    = loadImage("images/ckstoreinside.jpg");
     exitDoorImg = loadImage("images/open-exit-door.png");
 }
@@ -69,6 +70,12 @@ function draw() {
                     welcomeCalvinKlein();
                     doorX = (s.door.x + (s.door.w / 2));
                     doorY = (s.door.y +  s.door.h) + 20;
+                } else if (s instanceof Store3) {
+                    level = 3;  //temp
+                    person.setPosition(500, 600);
+                    //welcomeWalmart();
+                    doorX = (s.door.x + (s.door.w / 2));
+                    doorY = (s.door.y +  s.door.h) + 20;
                 } else {
                     showModal('myModal', 'Information', 'You are in a store');
                     person.canMove = false;
@@ -80,9 +87,31 @@ function draw() {
             }
         } );
     }
+    // LEVEL 3 - WALMART
+    if (level === 3) {
+        if(person.y > 649) {
+            level = 0;
+            person.setPosition(doorX, doorY);
+        }
+        stores.forEach( (s) => {
+            if( s instanceof Store3) {
+                s.showInside();
+                s.items.forEach( (i) => {
+                    if(person.collision(i)) {
+                        showModal('myModal', 'Information', 'You just bought a ' + i.name);
+                        person.canMove = false;
+                        person.x = (i.x + (i.w / 2));
+                        person.y = (i.y + i.h) + 20;
+                    } else {
+                        person.canMove = true;
+                    }
+                })
+            }
+        })
+
+    }
     // LEVEL 4 - CALVIN KLEIN
     if (level === 4) {
-        image(store4Bg, 187, 0);
         if(person.y > 599) {
             level = 0;
             person.setPosition(doorX, doorY);
