@@ -4,16 +4,21 @@ function Person(x, y) {
     this.r = 12;
     this.w = 24; // width
     this.h = 24; // height
-    this.speed = 3;
+    this.speed = 5;
     this.canMove = true;
 
     this.show = () => {
         fill('#00CED1');
         ellipseMode(CENTER);
         ellipse(this.x, this.y, this.r * 2, this.r * 2);
+    };
+
+    this.setPosition = (x, y, z) => {
+        this.x = x;
+        this.y = y;
     }
 
-    this.move = (dir) => {
+    this.move = (dir, level) => {
         if(this.canMove === true) {
             //left
             if (dir == 0) this.x -= this.speed;
@@ -24,11 +29,19 @@ function Person(x, y) {
             //down
             if (dir == 3) this.y += this.speed;
 
-            //boundaries
-            if(this.x < 0) this.x = 0;
-            if(this.y < 0) this.y = 0;
-            if(this.x > 1000) this.x = 1000;
-            if(this.y > 600) this.y = 600;
+            if(level === 0) {
+                //boundaries for level 0, mall
+                if(this.x < 0) this.x = 0;
+                if(this.y < 0) this.y = 0;
+                if(this.x > 1000) this.x = 1000;
+                if(this.y > 600) this.y = 600;
+            }
+            if(level === 4) {
+                if(this.x < 187) this.x = 187;
+                if(this.y < 0) this.y = 0;
+                if(this.x > 813) this.x = 813;
+                if(this.y > 600) this.y = 600;
+            }
 
         }
     }

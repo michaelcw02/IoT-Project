@@ -192,7 +192,9 @@ article hr {
    /* background-color: rgb(0,0,0); /* Fallback color 
     background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
-
+#myModal {
+    z-index: 5000 !important;
+}
 #firstModal {
     z-index: 3000 !important;
 }

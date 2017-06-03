@@ -1,5 +1,9 @@
 //GLOBAL VARIABLES
 var name = 'No name';
+var ckPurchases = 0;    //CALVIN KLEIN
+var phPurchases = 0;    //PIZZA HUT
+var wmPurchases = 0;    //WALMART
+var apPurchases = 0;    //APPLE
 
 function showModalRegister() {
     let element = '';
@@ -22,9 +26,7 @@ function register() {
     element += '<h2>Welcome, ' + name + ' </h2>';
     element += '</div>';
     changeMsgModal('myModal', 'Hello', element);
-    $('#myModal').keypress( (event) => {
-        if(event.which == 13) hideModal('myModal');
-    });
+    setTimeout( () => hideModal('myModal'), 1300 );
 }
 
 function showModalFingerPrint() {
@@ -113,6 +115,24 @@ function showModalOffers() {
     showModal('firstModal', 'WELCOME '+ name +'!', element);
 }
 
+function confirmPurchase(callback) {
+    let element = '';
+    element += '<div class="row welcome">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-primary" id="purchase"> Purchase </button>';
+            element += '<button type="button" class="btn btn-danger" id="cancel"> Cancel </button>';
+        element += '</div>';
+    element += '</div>';
+    showModal('myModal', 'Purchase Confirmation', element);
+    $('#purchase').click( () => {
+        callback();
+        hideModal('myModal');
+    } );
+    $('#cancel').click( () => {
+        hideModal('myModal');
+    } );
+}
+
 function showOfferCalvinKlein() {
     let element = '';
     element += '<div class="container-fluid">';
@@ -148,22 +168,30 @@ function showOfferCalvinKlein() {
     element += '</div>';
     element += '<div class="form-group height25" >';
     element += '<div class="alert alert-success hiddenDiv" id="messageResult">';
-    element += '<strong id="messageResultTitle">Info!... </strong>';
-    element += '<span id="messageResultMessage">This alert box could indicate a neutral informative change or action.</span>';
+    element += '<strong id="messageResultTitle">Info!... </strong>  ';
+    element += '  <span id="messageResultMessage">This alert box could indicate a neutral informative change or action.</span>';
     element += '</div>';
     element += '</div>';
     element += '</div>';
     showModal('secondModal', 'CALVIN KLEIN OFFERS', element);
     $('#ck01-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO CALVIN KLEIN TO RETIRE IT');
+        confirmPurchase( () => {
+            ckPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO CALVIN KLEIN TO RETIRE IT');
+        });       
     });
     $('#ck02-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO CALVIN KLEIN TO RETIRE IT');
+        confirmPurchase( () => {
+            ckPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO CALVIN KLEIN TO RETIRE IT');
+        });
     });
     $('#ck04-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO CALVIN KLEIN TO RETIRE IT');
+        confirmPurchase( () => {
+            ckPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO CALVIN KLEIN TO RETIRE IT');
+        });
     });
-
 }
 
 function showOfferSupermarket() {
@@ -208,13 +236,22 @@ function showOfferSupermarket() {
     element += '</div>';
     showModal('secondModal', 'WALMART OFFERS', element);
     $('#w01-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO WALMART TO RETIRE IT');
+        confirmPurchase( () => {
+            wmPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO WALMART TO RETIRE IT');
+        });   
     });
     $('#w02-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO WALMART TO RETIRE IT');
+        confirmPurchase( () => {
+            wmPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO WALMART TO RETIRE IT');
+        });   
     });
     $('#w03-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO WALMART TO RETIRE IT');
+        confirmPurchase( () => {
+            wmPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO WALMART TO RETIRE IT');
+        });   
     });
 }
 
@@ -260,13 +297,22 @@ function showOfferApple() {
     element += '</div>';
     showModal('secondModal', 'APPLE OFFERS', element);
     $('#a01-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        confirmPurchase( () => {
+            apPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        });   
     });
     $('#a02-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        confirmPurchase( () => {
+            apPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        });   
     });
     $('#a03-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        confirmPurchase( () => {
+            apPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        });   
     });
 }
 
@@ -312,12 +358,45 @@ function showOfferPizzaHut() {
     element += '</div>';
     showModal('secondModal', 'PIZZA HUT OFFERS', element);
     $('#ph01-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO PIZZA HUT TO RETIRE IT');
+        confirmPurchase( () => {
+            phPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        });   
     });
     $('#ph02-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO PIZZA HUT TO RETIRE IT');
+        confirmPurchase( () => {
+            phPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        });   
     });
     $('#ph03-img').on('click', (event) => {
-        showMessage('messageResult', 'BUYING...', 'ARTICLE PURCHASED PLEASE GO TO PIZZA HUT TO RETIRE IT');
+        confirmPurchase( () => {
+            phPurchases++;
+            showMessage('messageResult', 'PURCHASED...', 'ARTICLE PURCHASED PLEASE GO TO APPLE TO RETIRE IT');
+        });   
     });
+}
+
+
+function welcomeCalvinKlein() {
+    let element = '';
+    element += '<div class="row">'
+        element += '<h3>Here, you only need to take the products that you want and leave</h3>'
+    element += '</div>'
+    if(ckPurchases > 0) {
+        element += '<hr>'
+        element += '<div class="row bg-warning">'
+        let item = (ckPurchases == 1) ? 'item' : ckPurchases + ' items';
+        let isAre = (ckPurchases == 1) ? 'is' : 'are';
+            element += '<h3>The '+ item +  ' that you bought at the entrance '+ isAre +  ' ready for you to take away</h3>'
+        element += '</div><br>'
+    }
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+
+    showModal('firstModal', 'HELLO '+name+', WELCOME TO CALVIN KLEIN!', element);
+    $('#ok').click( () => hideModal('firstModal') );
 }
