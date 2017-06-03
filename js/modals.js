@@ -7,7 +7,7 @@ function showModalRegister() {
     element += '<form action="javascript:register();" id="register">';
     element +=     '<div class="form-group">';
     element +=          '<label for="name">Plase enter your name: </label>';
-    element +=          '<input type="text" class="form-control" id="name">';
+    element +=          '<input type="text" class="form-control" id="name" autofocus>';
     element +=      '</div>';
     element +=      '<div class="form-group">';
     element +=          '<button class="btn btn-md btn-primary" type="submit">Register</button>';
@@ -22,6 +22,9 @@ function register() {
     element += '<h2>Welcome, ' + name + ' </h2>';
     element += '</div>';
     changeMsgModal('myModal', 'Hello', element);
+    $('#myModal').keypress( (event) => {
+        if(event.which == 13) hideModal('myModal');
+    });
 }
 
 
@@ -83,7 +86,7 @@ function showModalOffers() {
     let element = '';
     element += '<div class="container-fluid">';
     element += '<div class="row">';
-    element += '<h2 class="text-center">WE CHECKED YOUR PROFILE AND THESE OFFERS MAY INTEREST YOU! CHECK THEM OUT!</h2>';
+    element += '<h3 class="text-center">WE CHECKED YOUR PROFILE AND THESE OFFERS MAY INTEREST YOU! CHECK THEM OUT!</h3>';
     element += '</div>';
     element += '<br>';
     element += '<div class="row">';
@@ -109,7 +112,7 @@ function showModalOffers() {
     element += '</div>';
     element += '</div>';
     element += '</div>';
-    showModal('firstModal', 'WELCOME MAJID!', element);
+    showModal('firstModal', 'WELCOME '+ name +'!', element);
 }
 
 function showOfferCalvinKlein() {
