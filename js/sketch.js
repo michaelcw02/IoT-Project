@@ -46,6 +46,7 @@ function setup() {
 //REFERENCE: https://p5js.org/reference/
 function draw() {
     background(250, 235, 215);
+    // LEVEL 0 - MALL
     if(level === 0) {
         stores.forEach((s) => s.show());
         machines.forEach((m) => m.show());
@@ -79,6 +80,7 @@ function draw() {
             }
         } );
     }
+    // LEVEL 4 - CALVIN KLEIN
     if (level === 4) {
         image(store4Bg, 187, 0);
         if(person.y > 599) {

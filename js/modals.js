@@ -380,12 +380,12 @@ function showOfferPizzaHut() {
 
 function welcomeCalvinKlein() {
     let element = '';
-    element += '<div class="row">'
+    element += '<div class="row welcome">'
         element += '<h3>Here, you only need to take the products that you want and leave</h3>'
     element += '</div>'
     if(ckPurchases > 0) {
         element += '<hr>'
-        element += '<div class="row bg-warning">'
+        element += '<div class="row bg-warning welcome">'
         let item = (ckPurchases == 1) ? 'item' : ckPurchases + ' items';
         let isAre = (ckPurchases == 1) ? 'is' : 'are';
             element += '<h3>The '+ item +  ' that you bought at the entrance '+ isAre +  ' ready for you to take away</h3>'
@@ -396,7 +396,7 @@ function welcomeCalvinKlein() {
             element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
         element += '</div>';
     element += '</div>';
-
+    ckPurchases = 0;
     showModal('firstModal', 'HELLO '+name+', WELCOME TO CALVIN KLEIN!', element);
     $('#ok').click( () => hideModal('firstModal') );
 }
