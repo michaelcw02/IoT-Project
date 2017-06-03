@@ -199,3 +199,8 @@ article hr {
 #secondModal {
     z-index: 4000 !important;
 }
+
+.welcome {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+}

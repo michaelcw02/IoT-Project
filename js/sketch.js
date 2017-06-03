@@ -24,6 +24,7 @@ function setup() {
     stores.push(new Store3(500, 31));
     stores.push(new Store4(663, 34));
     person = new Person(482, 600);
+    showModalRegister();
 }
 
 //REFERENCE: https://p5js.org/reference/

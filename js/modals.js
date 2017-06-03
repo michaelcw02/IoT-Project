@@ -1,3 +1,31 @@
+//GLOBAL VARIABLES
+var name = 'No name';
+
+function showModalRegister() {
+    let element = '';
+    element += ''; 
+    element += '<form action="javascript:register();" id="register">';
+    element +=     '<div class="form-group">';
+    element +=          '<label for="name">Plase enter your name: </label>';
+    element +=          '<input type="text" class="form-control" id="name">';
+    element +=      '</div>';
+    element +=      '<div class="form-group">';
+    element +=          '<button class="btn btn-md btn-primary" type="submit">Register</button>';
+    element +=      '</div>';
+    element += '</form>';
+    showModal('myModal', 'Register', element);
+}
+
+function register() {
+    name = $('#name').val();
+    let element = '<div class="row welcome">';
+    element += '<h2>Welcome, ' + name + ' </h2>';
+    element += '</div>';
+    changeMsgModal('myModal', 'Hello', element);
+}
+
+
+
 function showModalFingerPrint() {
     let element = '';
     element += '<div>';
