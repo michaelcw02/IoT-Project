@@ -10,6 +10,10 @@ function preload() {
     store2Img = loadImage("images/store5.jpg");
     store3Img = loadImage("images/store4.jpg");
     store4Img = loadImage("images/store6.jpg");
+    store1Ad  = loadImage("images/apple.png");
+    store2Ad  = loadImage("images/pizzaHut.png");
+    store3Ad  = loadImage("images/supermarket.jpg");
+    store4Ad  = loadImage("images/calvin-klein.svg");
 }
 
 function setup() {

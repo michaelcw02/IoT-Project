@@ -5,6 +5,7 @@ function Store2(x, y) {
 
     this.show = () => {
         image(store2Img, this.x, this.y);
+        image(store2Ad, this.x + 55, this.y + 5, 50, 50);
         this.door.show();
     }
 }
