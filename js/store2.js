@@ -9,7 +9,17 @@ function Store2(x, y) {
         this.door.show();
     }
 
+    this.doorInside = new Door(90, 300, 110, 110);
+    this.items = [];
+    this.items.push( new Item('Table~1', 310, 450, 160,  80) );
+    this.items.push( new Item('Table~2', 433, 400, 160,  80) );
+    this.items.push( new Item('Table~3', 468, 522, 160,  80) );
+    this.items.push( new Item('Table~4', 591, 468, 160,  80) );
+    this.items.push( new Item('Table~4', 710, 410, 160,  80) );
+
     this.showInside = () => {
         image(store2Bg, 0, 0, 1000, 750);
+        this.doorInside.show();
+        this.items.forEach( (i) => i.show() );
     }
 }

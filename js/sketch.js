@@ -9,6 +9,7 @@ var doorX;
 var doorY;
 var isBroken = false;
 var goBack   = false;
+var isSeated = false;
 
 function getPerson() {
     return person;
@@ -72,9 +73,9 @@ function draw() {
             if (person.collision(s.door)) {
                 if (s instanceof Store2) {
                     level = 2;
-                    
-                }
-                if (s instanceof Store3) {
+                    person.setPosition(150, 450);
+                    wecomePizzaHut();
+                } else if (s instanceof Store3) {
                     level = 3; //temp
                     person.setPosition(500, 600);
                     welcomeWalmart();
@@ -97,13 +98,24 @@ function draw() {
     }
     // LEVEL 2 - PIZZA HUT
     if (level === 2) {
-        if (person.y > 649) {
-            level = 0;
-            person.setPosition(doorX, doorY);
-        }
         stores.forEach( (s) => {
             if(s instanceof Store2) {
                 s.showInside();
+                if(person.collision(s.doorInside)) {
+                    level = 0;
+                    productsBoughtPH();
+                    isSeated = false;
+                    person.setPosition(doorX, doorY);
+                }
+                s.items.forEach( (i) => {
+                    if(person.collision(i)) {
+                        if(!isSeated) {
+                            justSeatedPH();
+                            isSeated = true;
+                        }
+                    }
+                } );
+
             }
         } )
 

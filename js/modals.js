@@ -493,3 +493,47 @@ function productsBoughtWM() {
     showModal('myModal', 'Good bye '+name, element);
     $('#ok2').click( () => hideModal('myModal') );
 }
+function wecomePizzaHut() {
+    let element = '';
+    element += '<div class="row welcome">'
+        element += '<h3>Here, you only need to seat down and the menu will appear personalized for you</h3><br>';
+        element += '<p>This is because we keep track of out costumer preferences, so we can have a better service</p>';
+    element += '</div>'
+    if(wmPurchases > 0) {
+        element += '<hr>'
+        element += '<div class="row bg-warning welcome">'
+        let item = (wmPurchases == 1) ? 'item' : wmPurchases + ' items';
+        let isAre = (wmPurchases == 1) ? 'is' : 'are';
+            element += '<h3>The '+ item +  ' that you bought at the entrance '+ isAre +  ' ready for you to take away</h3>'
+        element += '</div><br>'
+    }
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    wmPurchases = 0;
+    showModal('firstModal', 'HELLO '+name+', WELCOME TO PIZZA HUT!', element);
+    $('#ok').click( () => hideModal('firstModal') );
+}
+function justSeatedPH() {
+    let element = '';
+    element += '<div class="row welcome">';
+        element += '<h3>We detected that you have just sat down on one of our tables, and we are sending you the menu via bluetooth </h3>';
+    element += '</div>';
+    showModal('myModal', 'HERE IS OUR MENU, ' + name, element);
+}
+function productsBoughtPH() {
+    let element = '';
+    element += '<div class="row welcome">'
+        element += '<h3>Thank you for your visit</h3>';
+    element += '</div>';
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok2"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    phPurchases = 0;
+    showModal('myModal', 'Good bye '+name, element);
+    $('#ok2').click( () => hideModal('myModal') );
+}
