@@ -16,20 +16,22 @@ function getPerson() {
 }
 
 function preload() {
-    machineImg = loadImage("images/atm-machine.jpg");
-    store1Img = loadImage("images/store3.jpg");
-    store2Img = loadImage("images/store5.jpg");
-    store3Img = loadImage("images/store4.jpg");
-    store4Img = loadImage("images/store6.jpg");
-    store1Ad = loadImage("images/apple.png");
-    store2Ad = loadImage("images/pizzaHut.png");
-    store3Ad = loadImage("images/supermarket.jpg");
-    store4Ad = loadImage("images/calvin-klein.svg");
-    store2Bg = loadImage("images/restaurant-interior.jpg");
-    store3Bg = loadImage("images/Supermarket-shelves.jpg");
-    store4Bg = loadImage("images/ckstoreinside.jpg");
+    machineImg  = loadImage("images/atm-machine.jpg");
+    store1Img   = loadImage("images/store3.jpg");
+    store2Img   = loadImage("images/store5.jpg");
+    store3Img   = loadImage("images/store4.jpg");
+    store4Img   = loadImage("images/store6.jpg");
+    store1Ad    = loadImage("images/apple.png");
+    store2Ad    = loadImage("images/pizzaHut.png");
+    store3Ad    = loadImage("images/supermarket.jpg");
+    store4Ad    = loadImage("images/calvin-klein.svg");
+    store2Bg    = loadImage("images/restaurant-interior.jpg");
+    store3Bg    = loadImage("images/Supermarket-shelves.jpg");
+    store4Bg    = loadImage("images/ckstoreinside.jpg");
+    store4DR    = loadImage("images/dressingroom.jpg");
     exitDoorImg = loadImage("images/open-exit-door.png");
-    techImg = loadImage("images/technician.png");
+    techImg     = loadImage("images/technician.png");
+    netTopology = loadImage("images/topologylogo.jpg");
 }
 
 function setup() {
@@ -46,6 +48,7 @@ function setup() {
     stores.push(new Store4(663, 34));
     person = new Person(482, 600);
     tech = new Technician(600, 200);
+    topology = new Item('Topology', 0, 575, 150, 75, netTopology);
     showModalRegister();
 
 
@@ -58,6 +61,7 @@ function draw() {
     if (level === 0) {
         stores.forEach((s) => s.show());
         machines.forEach((m) => m.show());
+        topology.show();
         machines.forEach((m) => {
             if (person.collision(m)) {
                 showModalFingerPrint();
@@ -185,11 +189,21 @@ function draw() {
                     } else {
                         person.canMove = true;
                     }
-                })
+                });
+                if(person.collision(s.dressingRoom)) {
+                    dressRoomCK();
+                    intelligentMirror();
+                    person.canMove = false;
+                    person.x = s.dressingRoom.x + s.dressingRoom.w + 20;
+                    person.y = s.dressingRoom.y + (s.dressingRoom.h / 2);
+                } else {
+                    person.canMove = true;
+                }
             }
         })
 
     }
+
     person.show();
 
     if (keyIsDown(LEFT_ARROW)) person.move(0, level);

@@ -414,6 +414,58 @@ function welcomeCalvinKlein() {
 function addProductOnCK() {
     ckPurchases++;
 }
+function dressRoomCK() {
+    let element = '';
+
+    element += '<div id="myCarousel" class="carousel slide" data-ride="carousel">';
+    element += '    <ol class="carousel-indicators">';
+    element += '        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>';
+    element += '        <li data-target="#myCarousel" data-slide-to="1"></li>';
+    element += '        <li data-target="#myCarousel" data-slide-to="2"></li>';
+    element += '        <li data-target="#myCarousel" data-slide-to="3"></li>';
+    element += '    </ol>';
+    element += '    <div class="carousel-inner">';
+    element += '        <div class="item active">';
+    element += '            <img src="images/model1.jpg" alt="Los Angeles">';
+    element += '        </div>';
+    element += '        <div class="item">';
+    element += '            <img src="images/model2.jpg" alt="Chicago">';
+    element += '        </div>';
+    element += '        <div class="item">';
+    element += '            <img src="images/model3.jpg" alt="New York">';
+    element += '        </div>';
+    element += '        <div class="item">';
+    element += '            <img src="images/model4.jpg" alt="Boston">';
+    element += '        </div>';
+    element += '    </div>';
+    element += '    <a class="left carousel-control" href="#myCarousel" data-slide="prev">';
+    element += '        <span class="glyphicon glyphicon-chevron-left"></span>';
+    element += '        <span class="sr-only">Previous</span>';
+    element += '    </a>';
+    element += '    <a class="right carousel-control" href="#myCarousel" data-slide="next">';
+    element += '        <span class="glyphicon glyphicon-chevron-right"></span>';
+    element += '        <span class="sr-only">Next</span>';
+    element += '    </a>';
+    element += '</div>';
+    showModal('firstModal', 'Try It With Our new technology', element);
+}
+function intelligentMirror() {
+    let element = '';
+    element += '<div class="row welcome">'
+    element += '    <h3>This new Technology let us measure the person that is standing in front of the mirror and let us decide '
+    element += '        which clothes fit him/her better and what choices he/she has in order to buy our products, this technology '
+    element += '        combines IoT \& Machine Learning</h3>'
+    element += '</div>'
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    wmPurchases = 0;
+    showModal('secondModal', 'About the Intelligent Mirror', element);
+    $('#ok').click( () => hideModal('secondModal') );
+}
+
 function productsBoughtCK() {
     let element = '';
     if(ckPurchases > 0) {
@@ -504,7 +556,7 @@ function wecomePizzaHut() {
     let element = '';
     element += '<div class="row welcome">'
         element += '<h3>Here, you only need to seat down and the menu will appear personalized for you</h3><br>';
-        element += '<p>This is because we keep track of out costumer preferences, so we can have a better service</p>';
+        element += '<p>This is because we keep track of our costumer preferences, so we can have a better service</p>';
     element += '</div>'
     if(wmPurchases > 0) {
         element += '<hr>'

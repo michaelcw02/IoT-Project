@@ -19,9 +19,12 @@ function Store4(x, y) {
     this.items.push( new Item('HATS',       270, 430, 200,  50) );
     this.items.push( new Item('shoes',      525, 480, 220,  50) );
 
+    this.dressingRoom = new Item('Dressing Room', 0, 476, 200, 150, store4DR);
+
     this.showInside = () => {
         image(store4Bg, 187, 0);
         image(exitDoorImg, 310, 580, 50, 50);
         this.items.forEach( (i) => i.show() );
+        this.dressingRoom.show();
     }
 }
