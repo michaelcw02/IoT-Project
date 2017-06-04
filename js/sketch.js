@@ -71,10 +71,13 @@ function draw() {
 
         stores.forEach((s) => {
             if (person.collision(s.door)) {
+                doorX = (s.door.x + (s.door.w / 2));
+                doorY = (s.door.y + s.door.h) + 20;
                 if (s instanceof Store2) {
                     level = 2;
                     person.setPosition(150, 450);
                     wecomePizzaHut();
+                    doorY = (s.door.y + s.door.h) + 30;
                 } else if (s instanceof Store3) {
                     level = 3; //temp
                     person.setPosition(500, 600);
@@ -89,8 +92,6 @@ function draw() {
                     person.x = (s.door.x + (s.door.w / 2));
                     person.y = (s.door.y + s.door.h) + 20;
                 }
-                doorX = (s.door.x + (s.door.w / 2));
-                doorY = (s.door.y + s.door.h) + 20;
             } else {
                 person.canMove = true;
             }
@@ -132,10 +133,16 @@ function draw() {
                 s.showInside();
                 s.items.forEach((i) => {
                     if (person.collision(i)) {
-                        showModal('myModal', 'Information', 'You just bought a ' + i.name);
-                        if(!isBroken) {
-                            isBroken = addProductOnWalmart();
-                        }
+                        confirmPurchase( () => {
+                            i.qty--;
+                            if(!isBroken) {
+                                isBroken = addProductOnWalmart();
+                            } else wmPurchases++;
+                            if(i.qty == 2) {
+                                showModal('firstModal', 'Warning!', '<h3>The sensors have detected that there are only ' + i.qty + ' of ' + i.name + ' left, we are notifying our suppliers to ship more</h3>');
+                                i.qty += i.qty + 5;
+                            }
+                        }, i.qty, i.name );
                         person.canMove = false;
                         person.x = (i.x + (i.w / 2));
                         person.y = (i.y + i.h) + 20;
@@ -164,8 +171,14 @@ function draw() {
                 s.showInside();
                 s.items.forEach((i) => {
                     if (person.collision(i)) {
-                        showModal('myModal', 'Information', 'You just bought a ' + i.name);
-                        addProductOnCK();
+                        confirmPurchase( () => {
+                            i.qty--;
+                            addProductOnCK();
+                            if(i.qty == 2) {
+                                showModal('firstModal', 'Warning!', '<h3>The sensors have detected that there are only ' + i.qty + ' of ' + i.name + ' left, we are notifying our suppliers to ship more</h3>');
+                                i.qty += i.qty + 5;
+                            }
+                        }, i.qty, i.name );
                         person.canMove = false;
                         person.x = (i.x + (i.w / 2));
                         person.y = (i.y + i.h) + 20;

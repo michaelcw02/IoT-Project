@@ -11,13 +11,13 @@ function Store4(x, y) {
     
     //indoor part
     this.items = [];
-    this.items.push( new Item('shirts', 230, 230, 260,  80) );
-    this.items.push( new Item('dress',  520, 260,  70, 105) );
-    this.items.push( new Item('pant',   580, 260,  70, 100) );
-    this.items.push( new Item('shirt',  620, 260,  70,  65) );
-    this.items.push( new Item('pant',   680, 260,  70, 100) );
-    this.items.push( new Item('hats',   270, 430, 200,  50) );
-    this.items.push( new Item('shoes',  525, 480, 220,  50) );
+    this.items.push( new Item('T-SHIRTS',   230, 230, 260,  80) );
+    this.items.push( new Item('super dress',520, 260,  70, 105) );
+    this.items.push( new Item('green pant', 580, 260,  70, 100) );
+    this.items.push( new Item('red shirt',  620, 260,  70,  65) );
+    this.items.push( new Item('blue pant',  680, 260,  70, 100) );
+    this.items.push( new Item('HATS',       270, 430, 200,  50) );
+    this.items.push( new Item('shoes',      525, 480, 220,  50) );
 
     this.showInside = () => {
         image(store4Bg, 187, 0);

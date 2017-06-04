@@ -117,15 +117,22 @@ function showModalOffers() {
     showModal('firstModal', 'WELCOME '+ name +'!', element);
 }
 
-function confirmPurchase(callback) {
+function confirmPurchase(callback, qty, name) {
     let element = '';
     element += '<div class="row welcome">';
         element += '<div class="btn-group">';
             element += '<button type="button" class="btn btn-primary" id="purchase"> Purchase </button>';
             element += '<button type="button" class="btn btn-danger" id="cancel"> Cancel </button>';
         element += '</div>';
-    element += '</div>';
-    showModal('myModal', 'Purchase Confirmation', element);
+    element += '</div><hr>';
+    if(qty != undefined) {
+        element += '<div class="row welcome">';
+            element += '<h3>There are only ' + qty + ' left!</h3>'
+        element += '</div>';
+    }
+    let title = 'Purchase Confirmation ';
+    if(name != undefined) title += 'of ' + name;
+    showModal('myModal', title, element);
     $('#purchase').click( () => {
         callback();
         hideModal('myModal');
@@ -457,7 +464,7 @@ function addProductOnWalmart() {
         if(!isBroke) {
             let element = '';
             element += '<div class="row welcome">';
-                element += '<h3>The sensor in our regrigerators have detected that the temperature of this one is incorrect, ';
+                element += '<h3>The sensor in our refrigerators have detected that the temperature of one of them is incorrect, ';
                 element += 'so it is notifying the technicians of WALMART to check it out.</h3>';
             element += '</div>';
             element += '<div class="row text-center">';
@@ -504,8 +511,9 @@ function wecomePizzaHut() {
         element += '<div class="row bg-warning welcome">'
         let item = (wmPurchases == 1) ? 'item' : wmPurchases + ' items';
         let isAre = (wmPurchases == 1) ? 'is' : 'are';
-            element += '<h3>The '+ item +  ' that you bought at the entrance '+ isAre +  ' ready for you to take away</h3>'
-        element += '</div><br>'
+            element += '<h3>The '+ item +  ' that you bought at the entrance '+ isAre +  ' already served in a table</h3>'
+        element += '</div><br>';
+        isSeated = true;
     }
     element += '<div class="row text-center">';
         element += '<div class="btn-group">';

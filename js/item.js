@@ -5,6 +5,7 @@ function Item(name, x, y, w, h, img) {
     this.w = w;
     this.h = h;
     this.img = img;
+    this.qty = 10;
 
     this.show = () => {
         if(img != undefined)    image(this.img, this.x, this.y, this.w, this.h);
