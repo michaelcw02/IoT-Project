@@ -12,4 +12,14 @@ function Item(name, x, y, w, h, img) {
         stroke(255, 0, 0);
         rect(this.x, this.y, this.w, this.h);
     }
+    
+    this.valueInRange = (value, min, max) => {
+        return (value >= min) && (value <= max);
+    }
+
+    this.collision = (object) => {
+        let xOverlap = this.valueInRange(this.x, object.x, object.x + object.w) || this.valueInRange(object.x, this.x, this.x + this.w)
+        let yOverlap = this.valueInRange(this.y, object.y, object.y + object.h) || this.valueInRange(object.y, this.y, this.y + this.h)
+        return xOverlap && yOverlap;
+    }
 }

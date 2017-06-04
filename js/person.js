@@ -62,16 +62,5 @@ function Person(x, y) {
         if(distance < this.r)           return true;
         return false;
     }
-
-    //NOT IN USE, MIGHT BE USED LATER FOR RECTANGLES COLLISIONS
-    this.valueInRange = (value, min, max) => {
-        return (value >= min) && (value <= max);
-    }
-
-    this.isNear = (object) => {
-        let xOverlap = this.valueInRange(this.x, object.x, object.x + object.w) || this.valueInRange(object.x, this.x, this.x + this.w)
-        let yOverlap = this.valueInRange(this.y, object.y, object.y + object.h) || this.valueInRange(object.y, this.y, this.y + this.h)
-        return xOverlap && yOverlap;
-    }
 }
 

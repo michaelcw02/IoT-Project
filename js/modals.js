@@ -5,6 +5,8 @@ var phPurchases = 0;    //PIZZA HUT
 var wmPurchases = 0;    //WALMART
 var apPurchases = 0;    //APPLE
 
+var isBroke = false;   //WALMART'S REGRIGERATOR
+
 function showModalRegister() {
     let element = '';
     element += ''; 
@@ -418,10 +420,76 @@ function productsBoughtCK() {
     element += '</div>';
     element += '<div class="row text-center">';
         element += '<div class="btn-group">';
-            element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
+            element += '<button type="button" class="btn btn-success" id="ok2"> OK </button>';
         element += '</div>';
     element += '</div>';
     ckPurchases = 0;
     showModal('myModal', 'Good bye '+name, element);
-    $('#ok').click( () => hideModal('myModal') );
+    $('#ok2').click( () => hideModal('myModal') );
+}
+function welcomeWalmart() {
+    let element = '';
+    element += '<div class="row welcome">'
+        element += '<h3>Here, you only need to take the products that you want and leave</h3><br>';
+        element += '<p>This is because our products are all tagged with RFIDs and let us keep track of where our products are ';
+        element += 'by putting enough RFID sensors, it also let us know who took the product so we can charge it to that person</p> '
+    element += '</div>'
+    if(wmPurchases > 0) {
+        element += '<hr>'
+        element += '<div class="row bg-warning welcome">'
+        let item = (wmPurchases == 1) ? 'item' : wmPurchases + ' items';
+        let isAre = (wmPurchases == 1) ? 'is' : 'are';
+            element += '<h3>The '+ item +  ' that you bought at the entrance '+ isAre +  ' ready for you to take away</h3>'
+        element += '</div><br>'
+    }
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    wmPurchases = 0;
+    showModal('firstModal', 'HELLO '+name+', WELCOME TO WALMART!', element);
+    $('#ok').click( () => hideModal('firstModal') );
+}
+function addProductOnWalmart() {
+    wmPurchases++;
+    if(wmPurchases > 2) {
+        if(!isBroke) {
+            let element = '';
+            element += '<div class="row welcome">';
+                element += '<h3>The sensor in our regrigerators have detected that the temperature of this one is incorrect, ';
+                element += 'so it is notifying the technicians of WALMART to check it out.</h3>';
+            element += '</div>';
+            element += '<div class="row text-center">';
+                element += '<div class="btn-group">';
+                    element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
+                element += '</div>';
+            element += '</div>';
+            showModal('firstModal', 'WARNING!...', element);
+            $('#ok').click( () => hideModal('firstModal') );
+            isBroke = true;
+            return isBroke;
+        }
+    }
+    return isBroke;
+}
+function productsBoughtWM() {
+    let element = '';
+    if(wmPurchases > 0) {
+        element += '<div class="row bg-warning welcome">'
+        let item = (wmPurchases == 1) ? 'item' : wmPurchases + ' items';
+            element += '<h3>You bought '+ item +  ' </h3>'
+        element += '</div><br>'
+    } 
+    element += '<div class="row welcome">'
+        element += '<h3>Thank you for your visit</h3>';
+    element += '</div>';
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok2"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    wmPurchases = 0;
+    showModal('myModal', 'Good bye '+name, element);
+    $('#ok2').click( () => hideModal('myModal') );
 }
