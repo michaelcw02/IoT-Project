@@ -21,15 +21,15 @@ function Person(x, y) {
     this.move = (dir, level) => {
         if(this.canMove === true) {
             //left
-            if (dir == 0) this.x -= this.speed;
+            if (dir === 0) this.x -= this.speed;
             //up
-            if (dir == 1) this.y -= this.speed;
+            if (dir === 1) this.y -= this.speed;
             //right
-            if (dir == 2) this.x += this.speed;
+            if (dir === 2) this.x += this.speed;
             //down
-            if (dir == 3) this.y += this.speed;
+            if (dir === 3) this.y += this.speed;
 
-            if(level === 0 || level === 3) {
+            if(level === 0 || level === 3 || level === 2) {
                 //boundaries for level 0, mall
                 if(this.x < 0) this.x = 0;
                 if(this.y < 0) this.y = 0;
@@ -59,7 +59,7 @@ function Person(x, y) {
         if(this.y > obj.y + obj.h)  closeY = obj.y + obj.h;
 
         var distance = dist(this.x, this.y, closeX, closeY);
-        if(distance < this.r)           return true;
+        if(distance < this.r)   return true;
         return false;
     }
 }

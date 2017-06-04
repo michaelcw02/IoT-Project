@@ -10,6 +10,7 @@ var doorY;
 var isBroken = false;
 var goBack   = false;
 var isSeated = false;
+var isLost = false;
 
 function getPerson() {
     return person;
@@ -49,6 +50,7 @@ function setup() {
     person = new Person(482, 600);
     tech = new Technician(600, 200);
     topology = new Item('Topology', 0, 575, 150, 75, netTopology);
+    kid = new Kid(475, 600);
     showModalRegister();
 
 
@@ -62,6 +64,8 @@ function draw() {
         stores.forEach((s) => s.show());
         machines.forEach((m) => m.show());
         topology.show();
+        kid.move();
+        kid.show();
         machines.forEach((m) => {
             if (person.collision(m)) {
                 showModalFingerPrint();
@@ -72,7 +76,20 @@ function draw() {
                 person.canMove = true;
             }
         });
-
+        let distance = (dist(person.x, person.y, kid.x, kid.y) / 10).toFixed(1);
+        if(distance > 20) {
+            if(!isLost) {
+                lostKid();
+                isLost = true;
+            }
+            s = 'Your kid is ' + distance + ' meters away from you!';
+            textSize(21);
+            fill(0,0,0);
+            text(s, 600, 620);
+        } else if(isLost === true && distance < 2) {
+            isLost = false;
+            careKid();
+        }
         stores.forEach((s) => {
             if (person.collision(s.door)) {
                 doorX = (s.door.x + (s.door.w / 2));
@@ -205,6 +222,7 @@ function draw() {
     }
 
     person.show();
+
 
     if (keyIsDown(LEFT_ARROW)) person.move(0, level);
     if (keyIsDown(UP_ARROW)) person.move(1, level);

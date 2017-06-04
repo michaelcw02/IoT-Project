@@ -597,3 +597,32 @@ function productsBoughtPH() {
     showModal('myModal', 'Good bye '+name, element);
     $('#ok2').click( () => hideModal('myModal') );
 }
+function lostKid() {
+    let element = '';
+    element += '<div class="row welcome">';
+    element += '    <h3>Perhaps you have lost you kid! But do not worry, because of the bracelet we gave him/her in the entrance,';
+    element += '        you are able to track him/her down with our celular application</h3>';
+    element += '</div>';
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok2"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    phPurchases = 0;
+    showModal('firstModal', 'Warning '+name, element);
+    $('#ok2').click( () => hideModal('firstModal') );
+}
+function careKid() {
+    let element = '';
+    element += '<div class="row welcome">';
+    element += '    <h3>Your kid is in a radio of 2 meters, take care of him!</h3>';
+    element += '</div>';
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok2"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    phPurchases = 0;
+    showModal('firstModal', 'Good news '+name, element);
+    $('#ok2').click( () => hideModal('firstModal') );
+}
