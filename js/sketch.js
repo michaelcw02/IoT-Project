@@ -113,6 +113,7 @@ function draw() {
     // LEVEL 4 - CALVIN KLEIN
     if (level === 4) {
         if(person.y > 599) {
+            productsBoughtCK();
             level = 0;
             person.setPosition(doorX, doorY);
         }
@@ -122,6 +123,7 @@ function draw() {
                 s.items.forEach( (i) => {
                     if(person.collision(i)) {
                         showModal('myModal', 'Information', 'You just bought a ' + i.name);
+                        addProductOnCK();
                         person.canMove = false;
                         person.x = (i.x + (i.w / 2));
                         person.y = (i.y + i.h) + 20;

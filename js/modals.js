@@ -381,7 +381,9 @@ function showOfferPizzaHut() {
 function welcomeCalvinKlein() {
     let element = '';
     element += '<div class="row welcome">'
-        element += '<h3>Here, you only need to take the products that you want and leave</h3>'
+        element += '<h3>Here, you only need to take the products that you want and leave</h3><br>';
+        element += '<p>This is because our products are all tagged with RFIDs and let us keep track of where our products are ';
+        element += 'by putting enough RFID sensors, it also let us know who took the product so we can charge it to that person</p> '
     element += '</div>'
     if(ckPurchases > 0) {
         element += '<hr>'
@@ -399,4 +401,27 @@ function welcomeCalvinKlein() {
     ckPurchases = 0;
     showModal('firstModal', 'HELLO '+name+', WELCOME TO CALVIN KLEIN!', element);
     $('#ok').click( () => hideModal('firstModal') );
+}
+function addProductOnCK() {
+    ckPurchases++;
+}
+function productsBoughtCK() {
+    let element = '';
+    if(ckPurchases > 0) {
+        element += '<div class="row bg-warning welcome">'
+        let item = (ckPurchases == 1) ? 'item' : ckPurchases + ' items';
+            element += '<h3>You bought '+ item +  ' </h3>'
+        element += '</div><br>'
+    } 
+    element += '<div class="row welcome">'
+        element += '<h3>Thank you for your visit</h3>';
+    element += '</div>';
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    ckPurchases = 0;
+    showModal('myModal', 'Good bye '+name, element);
+    $('#ok').click( () => hideModal('myModal') );
 }
