@@ -12,10 +12,6 @@ var goBack   = false;
 var isSeated = false;
 var isLost = false;
 
-function getPerson() {
-    return person;
-}
-
 function preload() {
     machineImg  = loadImage("images/atm-machine.jpg");
     store1Img   = loadImage("images/store3.jpg");
@@ -96,7 +92,9 @@ function draw() {
         noStroke();
         text(s, 600, 620);
         if(person.collision(topology)) {
-            
+            showTopology();
+            person.x = (topology.x + topology.w) / 2;
+            person.y = topology.y - 20;
         }
         stores.forEach((s) => {
             if (person.collision(s.door)) {

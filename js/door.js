@@ -6,7 +6,6 @@ function Door(x, y, w, h) {
 
     this.show = () => {
         noFill();
-        stroke(255, 0, 0);
         rect(this.x, this.y, this.w, this.h);
     }
 }

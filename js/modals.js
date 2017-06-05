@@ -70,13 +70,13 @@ function drop(ev) {
     if (steps == 1 && data == "fingerprint") {
         ev.target.appendChild(imag);
         steps++;
-        document.getElementById("Ifingerprint").src = "../images/fingerprintIconC.png";
+        document.getElementById("Ifingerprint").src = "images/fingerprintIconC.png";
         ev.target.removeChild(imag);
     }
     if (steps == 2) {
         text.innerText = "Successful, come on!";
         var check = document.createElement("img");
-        check.src = "../images/personCheck.png";
+        check.src = "images/personCheck.png";
         check.width = "180";
         check.height = "180";
         ev.target.appendChild(check);
@@ -558,11 +558,11 @@ function welcomePizzaHut() {
         element += '<h3>Here, you only need to seat down and the menu will appear personalized for you</h3><br>';
         element += '<p>This is because we keep track of our costumer preferences, so we can have a better service</p>';
     element += '</div>'
-    if(wmPurchases > 0) {
+    if(phPurchases > 0) {
         element += '<hr>'
         element += '<div class="row bg-warning welcome">'
-        let item = (wmPurchases == 1) ? 'item' : wmPurchases + ' items';
-        let isAre = (wmPurchases == 1) ? 'is' : 'are';
+        let item = (phPurchases == 1) ? 'item' : phPurchases + ' items';
+        let isAre = (phPurchases == 1) ? 'is' : 'are';
             element += '<h3>The '+ item +  ' that you bought at the entrance '+ isAre +  ' already served in a table</h3>'
         element += '</div><br>';
         isSeated = true;
@@ -572,7 +572,7 @@ function welcomePizzaHut() {
             element += '<button type="button" class="btn btn-success" id="ok"> OK </button>';
         element += '</div>';
     element += '</div>';
-    wmPurchases = 0;
+    phPurchases = 0;
     showModal('firstModal', 'HELLO '+name+', WELCOME TO PIZZA HUT!', element);
     $('#ok').click( () => hideModal('firstModal') );
 }
@@ -600,7 +600,7 @@ function productsBoughtPH() {
 function lostKid() {
     let element = '';
     element += '<div class="row welcome">';
-    element += '    <h3>Perhaps you have lost you kid! But do not worry, because of the bracelet we gave him/her in the entrance,';
+    element += '    <h3>Perhaps you have lost your kid! But do not worry, because of the bracelet we gave him/her in the entrance,';
     element += '        you are able to track him/her down with our celular application</h3>';
     element += '</div>';
     element += '<div class="row text-center">';
@@ -639,5 +639,19 @@ function welcomeWarehouse() {
     element += '</div>';
     phPurchases = 0;
     showModal('firstModal', 'Good news '+name, element);
+    $('#ok2').click( () => hideModal('firstModal') );
+}
+function showTopology() {
+    let element = '';
+    element += '<div class="row">';
+    element += '    <img src="images/topology.png" alt="topology">';
+    element += '</div>';
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok2"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    phPurchases = 0;
+    showModal('firstModal', 'This is the projects topology', element);
     $('#ok2').click( () => hideModal('firstModal') );
 }

@@ -40,6 +40,7 @@ function Kid(x, y) {
     this.show = () => {
         fill('#00CED1');
         ellipseMode(CENTER);
+        noStroke();
         ellipse(this.x, this.y, this.r * 2, this.r * 2);
     }
 

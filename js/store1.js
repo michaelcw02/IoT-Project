@@ -18,6 +18,7 @@ function Store1(x, y) {
     this.showInside = () => {
         image(store1Bg, 187,   0);
         image(store1BD, 231, 248, 290, 180);
+        image(exitDoorImg, 425, 580, 50, 50);
         if (this.warehouseMan.x > 320 && this.warehouseMan.y < 290) {
             this.warehouseMan.init();
             this.qty += this.warehouseMan.qty;
@@ -28,7 +29,6 @@ function Store1(x, y) {
         textSize(24);
         fill(0,0,0);
         noStroke();
-        text(s, 300, 250);
-
+        text(s, 320, 230);
     }
 }
