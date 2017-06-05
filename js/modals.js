@@ -552,7 +552,7 @@ function productsBoughtWM() {
     showModal('myModal', 'Good bye '+name, element);
     $('#ok2').click( () => hideModal('myModal') );
 }
-function wecomePizzaHut() {
+function welcomePizzaHut() {
     let element = '';
     element += '<div class="row welcome">'
         element += '<h3>Here, you only need to seat down and the menu will appear personalized for you</h3><br>';
@@ -616,6 +616,21 @@ function careKid() {
     let element = '';
     element += '<div class="row welcome">';
     element += '    <h3>Your kid is in a radio of 2 meters, take care of him!</h3>';
+    element += '</div>';
+    element += '<div class="row text-center">';
+        element += '<div class="btn-group">';
+            element += '<button type="button" class="btn btn-success" id="ok2"> OK </button>';
+        element += '</div>';
+    element += '</div>';
+    phPurchases = 0;
+    showModal('firstModal', 'Good news '+name, element);
+    $('#ok2').click( () => hideModal('firstModal') );
+}
+function welcomeWarehouse() {
+    let element = '';
+    element += '<div class="row welcome">';
+    element += '    <h3>By using RFID on our products, we are also able to track what products are being dispatched and how many are dispatched.';
+    element += '    Meaning that there is no need to count manually how many products are in inventory.</h3>';
     element += '</div>';
     element += '<div class="row text-center">';
         element += '<div class="btn-group">';

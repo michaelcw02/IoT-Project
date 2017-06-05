@@ -36,7 +36,7 @@ function Person(x, y) {
                 if(this.x > 1000) this.x = 1000;
                 if(this.y > 650) this.y = 650;
             }
-            if(level === 4) {
+            if(level === 4 || level === 1) {
                 if(this.x < 187) this.x = 187;
                 if(this.y < 0) this.y = 0;
                 if(this.x > 813) this.x = 813;

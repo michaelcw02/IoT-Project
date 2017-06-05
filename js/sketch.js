@@ -22,13 +22,16 @@ function preload() {
     store2Img   = loadImage("images/store5.jpg");
     store3Img   = loadImage("images/store4.jpg");
     store4Img   = loadImage("images/store6.jpg");
-    store1Ad    = loadImage("images/apple.png");
+    store1Ad    = loadImage("images/warehouselogo.png");
     store2Ad    = loadImage("images/pizzaHut.png");
     store3Ad    = loadImage("images/supermarket.jpg");
     store4Ad    = loadImage("images/calvin-klein.svg");
+    store1Bg    = loadImage("images/providor.jpg");
     store2Bg    = loadImage("images/restaurant-interior.jpg");
     store3Bg    = loadImage("images/Supermarket-shelves.jpg");
     store4Bg    = loadImage("images/ckstoreinside.jpg");
+    store1BD    = loadImage("images/storage.png");
+    store1Cart  = loadImage("images/cart.jpg");
     store4DR    = loadImage("images/dressingroom.jpg");
     exitDoorImg = loadImage("images/open-exit-door.png");
     techImg     = loadImage("images/technician.png");
@@ -82,22 +85,28 @@ function draw() {
                 lostKid();
                 isLost = true;
             }
-            s = 'Your kid is ' + distance + ' meters away from you!';
-            textSize(21);
-            fill(0,0,0);
-            text(s, 600, 620);
         } else if(isLost === true && distance < 2) {
             isLost = false;
             careKid();
         }
+        s = 'Your kid is ' + distance + ' meters away from you!';
+        textSize(21);
+        fill(0,0,0);
+        noStroke();
+        text(s, 600, 620);
         stores.forEach((s) => {
             if (person.collision(s.door)) {
                 doorX = (s.door.x + (s.door.w / 2));
                 doorY = (s.door.y + s.door.h) + 20;
-                if (s instanceof Store2) {
+                if (s instanceof Store1) {
+                    level = 1;
+                    person.setPosition(482, 550);
+                    welcomeWarehouse();
+                }
+                else if (s instanceof Store2) {
                     level = 2;
                     person.setPosition(150, 450);
-                    wecomePizzaHut();
+                    welcomePizzaHut();
                     doorY = (s.door.y + s.door.h) + 30;
                 } else if (s instanceof Store3) {
                     level = 3; //temp
@@ -117,6 +126,19 @@ function draw() {
                 person.canMove = true;
             }
         });
+    }
+    // LEVEL 1 - WAREHOUSE
+    if (level === 1) {
+        if (person.y > 599) {
+            level = 0;
+            person.setPosition(doorX, doorY);
+        }
+        stores.forEach( (s) => {
+            if(s instanceof Store1) {
+                s.showInside();
+
+            }
+        } );
     }
     // LEVEL 2 - PIZZA HUT
     if (level === 2) {
@@ -222,7 +244,6 @@ function draw() {
     }
 
     person.show();
-
 
     if (keyIsDown(LEFT_ARROW)) person.move(0, level);
     if (keyIsDown(UP_ARROW)) person.move(1, level);

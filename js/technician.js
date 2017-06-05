@@ -1,7 +1,7 @@
 function Technician(x, y) {
     this.x = x;
     this.y = y;
-    this.speed = 2;
+    this.speed = 1;
     this.canMove = false;
     this.frame = 0;
     this.direction = 2; //0 down, 1 up, 2 left, 3 right
@@ -11,7 +11,7 @@ function Technician(x, y) {
         if(this.canMove) {
             if(this.direction === 2) {
                 if(this.x > 200) {
-                    this.x -= this.speed + 3;
+                    this.x -= this.speed + 1;
                     this.y += this.speed;
                 } else {
                     this.canMove = false;
@@ -19,7 +19,7 @@ function Technician(x, y) {
             }
             if(this.direction === 3) {
                 if(this.x < 600) {
-                    this.x += this.speed + 3;
+                    this.x += this.speed + 1;
                     this.y -= this.speed;
                 } else {
                     this.canMove = false;
