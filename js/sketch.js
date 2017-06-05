@@ -36,6 +36,7 @@ function preload() {
     exitDoorImg = loadImage("images/open-exit-door.png");
     techImg     = loadImage("images/technician.png");
     netTopology = loadImage("images/topologylogo.jpg");
+    topologyImg = loadImage("images/topology.png");
 }
 
 function setup() {
@@ -94,6 +95,9 @@ function draw() {
         fill(0,0,0);
         noStroke();
         text(s, 600, 620);
+        if(person.collision(topology)) {
+            
+        }
         stores.forEach((s) => {
             if (person.collision(s.door)) {
                 doorX = (s.door.x + (s.door.w / 2));
